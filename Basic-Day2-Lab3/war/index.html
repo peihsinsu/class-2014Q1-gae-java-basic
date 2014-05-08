@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    
+    <title>Hello App Engine</title>
+    <script>
+	$(document).ready(function(){
+	  $("#query").click(function(){
+		 $.ajax({
+			url: "/query?" + ($('#custNum').val() ? 'custNum='+$('#custNum').val() : '') 
+		 }).done(function(data) {
+			var html = "<table border=1>";
+			html += "<tr><td>Customer Number</td><td>Customer Name</td></tr>";
+			for(var i = 0 ; i < data.length ; i++) {
+				var v = data[i];
+				html = html + "<tr><td>"+v.customerNumber+"</td><td>"+v.customerName+"</td></tr>"
+			};
+			html+= "</table>";
+			$( "#result" ).append(html);
+		 });
+	  });
+	});
+	</script>
+
+  </head>
+
+  <body>
+    <h1>Query Customer by Customer Number Example...</h1>
+	Customer Number: <input type="text" name="custNum" id="custNum"/>
+	<input type="button" id="query" value="query"/>
+	<br/><br/>
+	<div id="result"></div>
+   
+  </body>
+</html>
