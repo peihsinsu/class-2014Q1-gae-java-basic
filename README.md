@@ -1,4 +1,4 @@
-class-2014Q1-gae-java-basic
+2014Q1 Class GAE Java Basic Lab
 ===========================
 
-GAE java basic class labs
+GAE java basic class labs, related slides please reference: http://www.slideshare.net/peihsinsu
