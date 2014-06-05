@@ -11,7 +11,7 @@ AdminSDK Sample Project
 
 ### AuthUtils.java
 
-Code for help auth. These static method will used by other api calls.
+Code for help auth. These static method will used by other api calls. You must apply the web application account in cloud console ( url ex: https://console.developers.google.com/project/your-cloud-project-id/permissions ). And set the clientId, clientSecret to the AuthUtil...
 
 ```
 public class AuthUtils {
@@ -70,7 +70,7 @@ public class AuthUtils {
 
 ### web.xml
 
-Set up the rule for force login
+Set up the rule for force login. Let auth process can be complete.
 
 ```
 <security-constraint>
@@ -86,7 +86,7 @@ Set up the rule for force login
 
 ### OAuthCallback.java
 
-The authenticate callback route.
+The authenticate callback route. The route of this servlet must set in web.xml for redirect after auth.
 
 ```
 public class OAuthCallback extends
@@ -122,31 +122,9 @@ public class OAuthCallback extends
 
 ## ShowAppAdminInfo.java
 
-Execute the admin sdk api and output to page.
+This servlet will use the credential when user finish Oauth flow then execute the admin sdk api and output to page.
 
 ```
-package com.gapps.cal;
-
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
-import com.google.api.client.extensions.appengine.auth.oauth2.AbstractAppEngineAuthorizationCodeServlet;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.json.jackson.JacksonFactory;
-import com.google.api.services.admin.directory.Directory;
-import com.google.api.services.admin.directory.model.Groups;
-import com.google.api.services.admin.directory.model.User;
-import com.google.api.services.admin.directory.model.Users;
-import com.google.appengine.api.users.UserServiceFactory;
-
 public class ShowAppAdminInfo extends AbstractAppEngineAuthorizationCodeServlet {
 
   private static final long serialVersionUID = -156275561843799745L;
@@ -219,5 +197,7 @@ public class ShowAppAdminInfo extends AbstractAppEngineAuthorizationCodeServlet 
   }
 }
 ```
+
+
 
 
