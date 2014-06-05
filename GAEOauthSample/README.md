@@ -1,6 +1,8 @@
 Oauth Sample Project - Access Googl Calendar
 ====
 
+本篇以Calendar API說明如何建制Oauth2認證流程，並延伸Google Calendar API為例，展示如何使用API。
+
 ## Working flow
 
 1. 開啓 http://your-app-id.appspot.com/ 並且 click "LOGIN" 鏈結
