@@ -11,15 +11,23 @@ Oauth Sample Project - Access Googl Calendar
 
 ## 建制步驟
 
-1. 至Cloud Console申請Web Application Account，並指定Server位置作為callback url的位置
-2. 修改AuthUtils，將Client ID, Client Secret設定於下面區塊內，並將Web Application Account所指定的callback url一併設定
+### 權限申請
+
+至Cloud Console申請Web Application Account，並指定Server位置作為callback url的位置
+
+### 設定專案存取權限
+
+修改AuthUtils，將Client ID, Client Secret設定於下面區塊內，並將Web Application Account所指定的callback url一併設定
 
 ```
 public static final String clientId = "467751377063-vq...6g0lqu.apps.googleusercontent.com";
 public static final String clientSecret = "lzZfWz...-1rS";
 public static final String callbackurl = "/oauth2callback";
 ```
-3. 使用ShowCalendarInfo.java作為範例，改寫下面區塊，以呼叫不同API
+
+### 延伸Calendar範例，使用其他API
+
+使用ShowCalendarInfo.java作為範例，改寫下面區塊，以呼叫不同API
 
 ```
 Calendar service = new Calendar(httpTransport, jsonFactory, getCredential());
